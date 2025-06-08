@@ -10,7 +10,7 @@ import { UserRole } from '../users.entity';
 export class UpdateUserDto {
   @IsOptional()
   @IsString()
-  name?: string;
+  username?: string;
 
   @IsOptional()
   @IsEmail()
