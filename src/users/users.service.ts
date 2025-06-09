@@ -6,7 +6,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm'; // Importe o decorador InjectRepository
 import { Repository } from 'typeorm'; // Importe Repository
 import * as bcrypt from 'bcryptjs';
-import { User } from './users.entity';
+import { User } from './entity/users.entity';
 import { CreateUserDto } from './dto/create-users.dto';
 import { UpdateUserDto } from './dto/update-users.dto';
 

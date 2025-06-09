@@ -13,11 +13,11 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
-import { UserRole } from './users.entity';
+import { UserRole } from './entity/users.entity';
 import { CreateUserDto } from './dto/create-users.dto';
-import { RolesGuard } from 'src/auth/roles.guard';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { Roles } from 'src/auth/roles.decorator';
+import { RolesGuard } from 'src/auth/guard/roles.guard';
+import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
+import { Roles } from 'src/auth/decorator/roles.decorator';
 import { UpdateUserDto } from './dto/update-users.dto';
 
 @Controller('users')
