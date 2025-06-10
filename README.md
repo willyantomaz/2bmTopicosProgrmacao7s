@@ -30,9 +30,9 @@ Este é um projeto de API RESTful desenvolvido com NestJS, focado em autenticaç
 
 Para rodar esta aplicação em sua máquina, você precisará ter o seguinte instalado:
 
-* **Node.js** (versão 18.x ou superior recomendada)
-* **npm** (gerenciador de pacotes do Node.js)
-* **PostgreSQL** (servidor de banco de dados)
+- **Node.js** (versão 18.x ou superior recomendada)
+- **npm** (gerenciador de pacotes do Node.js)
+- **PostgreSQL** (servidor de banco de dados)
 
 ---
 
@@ -62,7 +62,7 @@ Após clonar o repositório, navegue até a pasta do projeto no seu terminal e i
 
 $ npm install
 Isso instalará todos os pacotes necessários, incluindo @nestjs/typeorm, typeorm, pg, @nestjs/jwt, passport, bcryptjs, e class-validator.
-````
+```
 
 Executando a Aplicação
 Modo de Desenvolvimento
@@ -74,19 +74,56 @@ A API estará disponível em http://localhost:3000. O TypeORM irá automaticamen
 
 Outros Comandos
 Compilar e Rodar (Produção):
+
 ```Bash
 
 $ npm run start:prod
-````
+```
+
 Compilar (apenas):
+
 ```Bash
 
 $ npm run build
-````
+```
 
+---
+
+## **Executando com Docker**
+
+Este projeto já está configurado para rodar facilmente com Docker, utilizando o arquivo `docker-compose.yaml`. O Docker irá criar dois containers:
+
+- **db**: um container com PostgreSQL 13, com persistência de dados em volume.
+- **api**: a aplicação NestJS, já conectada ao banco de dados.
+
+### **Passos para rodar com Docker**
+
+1. **Crie um arquivo `.env` na raiz do projeto** com a seguinte configuração (você pode alterar o valor do segredo se desejar):
+
+   ```env
+   JWT_SECRET=sua_chave_secreta_aqui
+   ```
+
+2. **Suba os containers com o comando:**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   Isso irá baixar as imagens necessárias, construir a aplicação e iniciar tanto o banco de dados quanto a API.  
+   A API ficará disponível em [http://localhost:3000](http://localhost:3000).
+
+3. **Para parar os containers:**
+
+   ```bash
+   docker-compose down
+   ```
+
+---
 
 Endpoints da API
 A API oferece as seguintes rotas principais para gerenciamento de usuários e autenticação:
+
 ```Bash
 POST /users/register: Cadastra um novo usuário.
 Público.
@@ -108,4 +145,4 @@ Body: { "username"?: "...", "email"?: "...", "password"?: "...", "role"?: "user"
 DELETE /users/:id: Deleta um usuário específico.
 Protegida por JWT. Apenas admin.
 Header: Authorization: Bearer <seu_token_jwt>
-````
+```
